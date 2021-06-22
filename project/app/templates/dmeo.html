@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Title</title>
+
+        <style>
+        body,table,td{
+        color:black;
+        font-family:calibri;
+        font-size:30px;
+        background-color:orange;
+        }
+
+        .picture{
+        background-image: url("{% static 'post2.jpg' %}");
+        background-repeat:no repeat;
+        background-attachment:fixed;
+        background-size:cover;
+        background-color:black;
+        background-position:center;
+        opacity:0.8;
+        }
+
+        .transbox {
+        color:white;
+      border: 3px solid white;
+      border-radius:40px;
+      opacity: 0.8;
+      margin-left:35px;
+      background-color:black;
+      }
+
+      .transbox1 {
+      border: 3px solid white;
+      border-radius:20px;
+      color:white;
+      background-color:black;
+      }
+
+      select{
+      border:2px solid black;
+      border-radius:5px;
+      background-color:white;
+      font-size:20px;
+      margin:5px;
+      opacity:0.6;
+      }
+
+      input{
+        border:2px solid black;
+        background-color:transparent;
+        font-size:20px;
+        margin:15px;
+        padding:10px;
+        border-radius:10px;
+        color:black;
+      }
+
+
+
+    </style>
+</head>
+<body class="picture">
+<form action="/" method="" align="right">
+    <button action="submit" style="background-color:white;border:2px solid black;color:black;border-radius:10px;padding:5px;margin:15px;cursor:pointer;margin-bottom:0px"><i class="material-icons">home</i></button>
+            </form>
+
+<form id="form" action="dmeo" method="POST">
+    {% csrf_token %}
+<!--    <p name="selection" , align="center">{{form}}<br>-->
+<!--        <input type="submit" value="submit" /></p>-->
+<!--    <p>{{ch.value}}</p>-->
+    <div align="center">
+
+        <label><b>Select Blog:</b></label>
+<select name="selection" id="selection" onchange="this.form.submit()">
+    <option value=""></option>
+{% for data in data %}
+    <option value="{{data.id}}" onclick="this.form.submit()">{{data.title}}</option>
+ {% endfor %}
+</select>
+
+</div>
+
+<h2 align="center">Display Page</h2>
+
+<div style="color:black">
+    <fieldset style="width:90vw;min-width:auto;word-wrap: break-word;margin-bottom:50px" class="transbox">
+        <legend align="center" class="transbox1" style="padding:10px"><b>{{data1.title}}</b></legend>
+        <p align="left" style="display:block;margin:5px;font-size:20px"><b>Create by {{data1.name}} at {{data1.dat}}<br>
+        Updated at {{data1.upd}}</b></p>
+        Post:
+        <p style="display:block;margin:5px;padding-left:50px" onchange="changeFunc();">{{data1.post}}</p>
+    </fieldset>
+
+</div>
+<br>
+    </form>
+</body>
+</html>

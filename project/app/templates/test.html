@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <style>
+        body,table,td{
+        color:white;
+        font-family:calibri;
+        font-size:30px;
+        background-color:orange;
+        }
+
+        .picture{
+        background-image: url("{% static 'c.jpg' %}");
+        background-repeat:no repeat;
+        background-attachment:fixed;
+        background-size:cover;
+        background-color:black;
+        background-position:center;
+        opacity:0.8;
+        }
+
+        .transbox {
+        color:white;
+      border: 2px dotted white;
+      border-radius:40px;
+      opacity: 1;
+      margin-left:35px;
+      }
+
+      .transbox1 {
+      color:white;
+      border: 2px dotted white;
+      border-radius:20px;
+      }
+    </style>
+</head>
+<body class="picture">
+<form action="test" method="POST">
+    {% csrf_token %}
+    <p align="center">{{form}}</p>
+<button type="submit">Submit</button>
+<h2 align="center">Display Page</h2>
+
+
+
+<div style="color:black">
+    <fieldset style="width:90vw;min-width:auto;word-wrap: break-word" class="transbox">
+        <legend align="center" class="transbox1" style="padding:10px"><b>{{data.title}}</b></legend>
+        <p align="left" style="display:block;margin:5px;font-size:20px"><b>Create by {{data.name}} at {{data.dat}}</b></p>
+        Post:
+        <p style="display:block;margin:5px;padding-left:50px">{{data.post}}</p>
+    </fieldset>
+</div>
+<br>
+
+    </form>
+
+
+</body>
+</html>

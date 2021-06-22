@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <style>
+        body,table,td{
+        color:white;
+        font-family:calibri;
+        font-size:25px;
+        background-color:orange;
+        }
+
+        .picture{
+        background-image: url("{% static 'home.jpg' %}");
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+        background-size:cover;
+        background-color:black;
+        background-position:center;
+        opacity:0.8;
+        }
+
+        div{
+        margin:15%;
+        }
+
+        button{
+        border:2px solid white;
+        background-color:black;
+        font-size:25px;
+        margin:15px;
+        padding:20px;
+        border-radius:10px;
+        color:white;
+        cursor:pointer;
+        opacity:0.8;
+        }
+    </style>
+</head>
+<body class="picture">
+<h1 align="center", style="color:white;">Blog Project Home Page</h1>
+<div align="center">
+    <a href="{% url 'add' %}"><button type="button">Add</button></a>
+    <a href="{% url 'dmeo' %}"><button type="button">Display</button></a>
+        </div>
+
+</body>
+</html>
